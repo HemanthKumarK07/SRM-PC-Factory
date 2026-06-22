@@ -139,7 +139,7 @@ const TRANSLATIONS = {
       sec1_title: '1. Information We Collect',
       sec1_desc: 'We collect your name, email, phone number, and UPI Transaction Reference ID (UTR) when you make a booking. This details are used strictly to verify your transaction and communicate regarding your custom PC build.',
       sec2_title: '2. Refund Policy',
-      sec2_desc: 'The booking advance fee of ₹2 (or ₹129) is collected to filter out spam inquiries and is 100% fully refundable upon final PC delivery or build cancellation.',
+      sec2_desc: 'The booking advance fee of ₹129 is collected to filter out spam inquiries and is 100% fully refundable upon final PC delivery or build cancellation.',
       sec3_title: '3. Data Security',
       sec3_desc: 'Your transaction details are stored locally and securely. We do not sell, trade, or share your personal data with any third-party marketing services.',
       btn_close: 'Close'
@@ -279,7 +279,7 @@ const TRANSLATIONS = {
       sec1_title: '1. நாங்கள் சேகரிக்கும் தகவல்கள்',
       sec1_desc: 'நீங்கள் முன்பதிவு செய்யும் போது உங்கள் பெயர், மின்னஞ்சல், தொலைபேசி எண் மற்றும் UPI பரிவர்த்தனை குறிப்பு ஐடி (UTR) ஆகியவற்றை நாங்கள் சேகரிக்கிறோம். இந்த விவரங்கள் உங்களின் பணப் பரிவர்த்தனையைச் சரிபார்க்கவும் உங்களோடு தொடர்பு கொள்ளவும் மட்டுமே பயன்படுத்தப்படும்.',
       sec2_title: '2. பணத்தைத் திரும்பப் பெறுதல் கொள்கை',
-      sec2_desc: 'முன்பதிவு முன்பணக் கட்டணமான ₹2 (அல்லது ₹129) தேவையற்ற விசாரணைகளைத் தவிர்க்க வசூலிக்கப்படுகிறது. கணினி முழுமையாக விநியோகிக்கப்படும் போதோ அல்லது ஆர்டர் ரத்து செய்யப்படும் போதோ இந்தத் தொகை 100% முழுமையாகத் திருப்பித் தரப்படும்.',
+      sec2_desc: 'முன்பதிவு முன்பணக் கட்டணமான ₹129 தேவையற்ற விசாரணைகளைத் தவிர்க்க வசூலிக்கப்படுகிறது. கணினி முழுமையாக விநியோகிக்கப்படும் போதோ அல்லது ஆர்டர் ரத்து செய்யப்படும் போதோ இந்தத் தொகை 100% முழுமையாகத் திருப்பித் தரப்படும்.',
       sec3_title: '3. தரவு பாதுகாப்பு',
       sec3_desc: 'உங்கள் பரிவர்த்தனை விவரங்கள் உள்ளூரிலேயே மிகவும் பாதுகாப்பாகச் சேமிக்கப்படுகின்றன. உங்களின் தனிப்பட்ட தரவுகளை எந்தவொரு மூன்றாம் தரப்பு விளம்பர நிறுவனங்களுக்கும் நாங்கள் விற்கவோ அல்லது பகிரவோ மாட்டோம்.',
       btn_close: 'மூடு'

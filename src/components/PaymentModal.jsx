@@ -6,7 +6,7 @@ import { useLanguage } from './LanguageContext'
 // ─── ⚙️  CONFIGURATION ────────────────────────────────────────────────────────
 const UPI_ID      = 'hemanthkumarkumaravel@okaxis'
 const UPI_NAME    = 'Raja'
-const AMOUNT      = '2'   // ← ₹2 for testing (change to 129 for production)
+const AMOUNT      = '129'   // ← ₹129 for testing / production
 const GOOGLE_FORM = 'https://docs.google.com/forms/d/e/1FAIpQLScuIvCwT4mFyrd9h8OHWTIu8brVnE4CeuYG7s44_00joWxug/viewform'
 // ──────────────────────────────────────────────────────────────────────────────
 
