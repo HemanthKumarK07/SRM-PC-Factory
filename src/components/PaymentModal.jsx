@@ -70,10 +70,10 @@ export default function PaymentModal({ build, onClose }) {
       if (response.ok && data.ok) {
         setStep('success')
       } else {
-        setBackendError(data.error || 'Transaction verification failed.')
+        setBackendError(data.error || 'Secure transaction verification failed.')
       }
     } catch (err) {
-      setBackendError('Failed to connect to the verification server. Please try again.')
+      setBackendError('Failed to connect to the secure order confirmation server. Please try again.')
     } finally {
       setIsSubmitting(false)
     }
