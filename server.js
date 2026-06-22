@@ -7,13 +7,16 @@ import { fileURLToPath } from 'url'
 
 const __dirname  = path.dirname(fileURLToPath(import.meta.url))
 const app        = express()
-const PORT       = 3001
+const PORT       = process.env.PORT || 3001
 const RECORDS_FILE = path.join(__dirname, 'utr-records.json')
 const MAX_USES   = 2   // max times a UTR can be submitted
 
-// ── Allow Vite dev proxy ───────────────────────────────────────────────────
+// Allow Vite dev proxy & general requests
 app.use(cors({ origin: /^http:\/\/localhost(:\d+)?$/ }))
 app.use(express.json())
+
+// Serve static assets from Vite's build directory (dist)
+app.use(express.static(path.join(__dirname, 'dist')))
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 const RECEIVED_FILE = path.join(__dirname, 'received-payments.json')
@@ -46,10 +49,11 @@ function normaliseUtr(utr) {
 }
 
 // ── Health check ───────────────────────────────────────────────────────────
+app.get('/api/health', (_req, res) => res.json({ ok: true }))
 app.get('/health', (_req, res) => res.json({ ok: true }))
 
 // ── SMS Webhook receiver (For live payment detection on owner's phone) ────
-app.post('/sms-webhook', (req, res) => {
+const smsWebhookHandler = (req, res) => {
   const { message, sender } = req.body
   if (!message) {
     return res.status(400).json({ ok: false, error: 'Message body required' })
@@ -82,13 +86,16 @@ app.post('/sms-webhook', (req, res) => {
   }
 
   return res.json({ ok: false, message: 'No UTR found in SMS' })
-})
+}
+
+app.post('/sms-webhook', smsWebhookHandler)
+app.post('/api/sms-webhook', smsWebhookHandler)
 
 // ── Validate + Record UTR ─────────────────────────────────────────────────
 // Rules:
 //   1. UTR tied to first email used — cannot be reused with a different email
 //   2. Max 2 submissions per UTR (across any session)
-app.post('/validate-utr', (req, res) => {
+app.post('/api/validate-utr', (req, res) => {
   const { utr, email, name, buildName, buildTier } = req.body
 
   if (!utr || !email) {
@@ -170,12 +177,19 @@ app.post('/validate-utr', (req, res) => {
 })
 
 // ── Admin: view all UTR records (protect this in production!) ─────────────
-app.get('/admin/records', (_req, res) => {
+app.get('/api/admin/records', (_req, res) => {
   res.json(loadRecords())
 })
 
+// ── SPA Fallback ───────────────────────────────────────────────────────────
+// Serve React App frontend for any other routes (must be last!)
+app.get('/*splat', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
+
 app.listen(PORT, () => {
-  console.log(`\n🚀 SRM PC Factory API → http://localhost:${PORT}`)
+  console.log(`\n🚀 SRM PC Factory Server → http://localhost:${PORT}`)
+  console.log(`   Serving frontend from: ${path.join(__dirname, 'dist')}`)
   console.log(`   UTR records file: ${RECORDS_FILE}`)
   console.log(`   Max UTR uses: ${MAX_USES}\n`)
 })
